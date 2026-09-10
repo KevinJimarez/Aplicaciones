@@ -14,3 +14,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Proyectos web
+**/node_modules/
+**/dist/
+**/.env
+**/.env.local
+**/*.tsbuildinfo

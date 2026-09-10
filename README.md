@@ -1,4 +1,15 @@
-# Aplicación nativa para Wear OS
+# Aplicaciones Web Progresivas
+
+Repositorio académico de **Kevin Salas Jimarez** (matrícula **2311080876**) para la materia Aplicaciones Web Progresivas, grupo 10 B - 2026.
+
+## Actividades
+
+1. **Aplicación nativa para Wear OS:** el proyecto Android se conserva en la raíz para mantener compatible la entrega anterior.
+2. **Aplicación web NEXORA:** [código, instrucciones, evidencias y reporte](./02-aplicacion-web-nexora/).
+
+Cada actividad se mantiene en una ubicación independiente dentro del mismo repositorio. Así, los productos pueden consultarse juntos sin mezclar sus dependencias ni utilizar ramas como carpetas de entrega.
+
+## Actividad 1: aplicación nativa para Wear OS
 
 Proyecto académico de una aplicación nativa para smartwatch Android. La aplicación muestra una carátula de reloj digital y un menú con herramientas de salud, actividad y utilidades.
 
