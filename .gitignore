@@ -21,3 +21,10 @@ local.properties
 **/.env
 **/.env.local
 **/*.tsbuildinfo
+
+# Archivos generados dentro de cada actividad
+**/.idea/
+**/build/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/

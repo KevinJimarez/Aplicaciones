@@ -1,4 +1,4 @@
-# NEXORA – Gestor Inteligente de Proyectos
+# Actividad 02 — NEXORA Gestor Inteligente de Proyectos
 
 NEXORA es una aplicación web de gestión de proyectos pensada para equipos pequeños y presentaciones académicas. Permite organizar el trabajo en proyectos, visualizar métricas reales, administrar tareas en un tablero Kanban y consultar a NORA, un asistente local que analiza los datos sin necesitar servicios externos.
 
