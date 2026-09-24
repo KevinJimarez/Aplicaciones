@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel SaaS de ejemplo que consume servicios REST locales.">
+  <title>ServiceHub SaaS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#inicio" aria-label="ServiceHub inicio">
+      <span class="brand-mark">S</span>
+      <span>ServiceHub</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a class="active" href="#inicio"><span>⌂</span> Resumen</a>
+      <a href="#planes"><span>◇</span> Planes</a>
+      <a href="#clientes"><span>◎</span> Clientes</a>
+      <a href="#servicios"><span>↔</span> Servicios API</a>
+    </nav>
+    <div class="sidebar-foot">
+      <span class="online-dot"></span>
+      API operativa
+      <small>localhost:8060</small>
+    </div>
+  </aside>
+
+  <main id="inicio">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Aplicación orientada a servicios</p>
+        <h1>Panel SaaS</h1>
+        <p class="subtitle">Datos obtenidos en tiempo real desde servicios REST independientes.</p>
+      </div>
+      <div class="profile"><span>KS</span><div><b>Kevin Salas</b><small>Administrador</small></div></div>
+    </header>
+
+    <section class="metrics" aria-label="Indicadores principales">
+      <article><div class="metric-icon mint">$</div><div><span>Ingreso mensual</span><strong id="revenue">—</strong><small class="positive">+12.4% este mes</small></div></article>
+      <article><div class="metric-icon violet">◎</div><div><span>Clientes activos</span><strong id="customers-total">—</strong><small>Organizaciones</small></div></article>
+      <article><div class="metric-icon blue">↔</div><div><span>Servicios en línea</span><strong id="services-total">—</strong><small class="positive">Todos disponibles</small></div></article>
+      <article><div class="metric-icon orange">↑</div><div><span>Disponibilidad</span><strong id="availability">—</strong><small>Últimos 30 días</small></div></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="clientes">
+        <div class="panel-head"><div><h2>Clientes recientes</h2><p>Servicio <code>GET /api/customers</code></p></div><span class="tag">REST</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cliente</th><th>Plan</th><th>Estado</th></tr></thead>
+            <tbody id="customers-body"><tr><td colspan="3">Consultando servicio…</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel service-panel" id="servicios">
+        <div class="panel-head"><div><h2>Arquitectura de servicios</h2><p>La interfaz consume respuestas JSON.</p></div></div>
+        <ol class="service-flow">
+          <li><span class="step">1</span><div><b>Interfaz web</b><small>HTML CSS JavaScript</small></div></li>
+          <li><span class="connector">↓</span></li>
+          <li><span class="step">2</span><div><b>API REST</b><small>Solicitudes HTTP</small></div></li>
+          <li><span class="connector">↓</span></li>
+          <li><span class="step">3</span><div><b>Servicios</b><small>Planes clientes suscripciones</small></div></li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="panel plans-panel" id="planes">
+      <div class="panel-head"><div><h2>Planes del servicio</h2><p>Información proporcionada por <code>GET /api/plans</code></p></div><button id="refresh" type="button">Actualizar datos</button></div>
+      <div class="plans" id="plans"><p>Consultando catálogo…</p></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

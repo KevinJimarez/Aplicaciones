@@ -11,6 +11,7 @@ Repositorio académico de **Kevin Salas Jimarez** (matrícula **2311080876**) pa
 | 03 | [Aplicación de escritorio de gestión de productos](./03-aplicacion-escritorio-gestion-productos/) | Código C# y Windows Forms, evidencias y reporte académico. |
 | 04 | [Aplicación móvil con LazyColumn](./04-aplicacion-movil-lazycolumn/) | Código Android con Jetpack Compose, capturas y reporte académico. |
 | 05 | [Aplicación multiplataforma web NEXORA](./05-aplicacion-multiplataforma-nexora/) | Código React, evidencias de escritorio y móvil, y reporte académico. |
+| 06 | [Aplicación orientada a servicios ServiceHub](./06-aplicacion-orientada-servicios-servicehub/) | Panel SaaS, API REST en Python, evidencias y reporte académico. |
 
 Cada actividad se encuentra en su propia carpeta para mantener separados el código, las dependencias y la documentación de cada entrega.
 

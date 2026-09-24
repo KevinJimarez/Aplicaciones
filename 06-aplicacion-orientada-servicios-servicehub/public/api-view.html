@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ServiceHub API</title>
+  <style>
+    body{margin:0;background:#101528;color:#e8ecf7;font:15px ui-monospace,SFMono-Regular,Menlo,monospace}
+    main{max-width:920px;margin:42px auto;padding:0 24px}
+    h1{font:700 28px Inter,system-ui,sans-serif;margin:0 0 8px}.lead{color:#9ea9c2;margin:0 0 24px}
+    .endpoint{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid #30395a;background:#1a2139;border-radius:12px 12px 0 0}
+    .method{padding:5px 8px;border-radius:6px;background:#1f936f;color:white;font-weight:800;font-size:12px}
+    pre{margin:0;padding:22px;white-space:pre-wrap;line-height:1.55;border:1px solid #30395a;border-top:0;border-radius:0 0 12px 12px;background:#151b30;color:#bfe8dc}
+    .ok{color:#62d5ab;font:600 13px Inter,system-ui,sans-serif;margin-top:16px}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>ServiceHub API REST</h1>
+    <p class="lead">Respuesta JSON consumida por la interfaz del panel SaaS.</p>
+    <div class="endpoint"><span class="method">GET</span><span>http://127.0.0.1:8060/api/customers</span></div>
+    <pre id="result">Consultando servicio…</pre>
+    <p class="ok" id="status"></p>
+  </main>
+  <script>
+    fetch('/api/customers').then(r => r.json()).then(data => {
+      document.querySelector('#result').textContent = JSON.stringify(data, null, 2);
+      document.querySelector('#status').textContent = '✓ HTTP 200 · Servicio disponible';
+    });
+  </script>
+</body>
+</html>
