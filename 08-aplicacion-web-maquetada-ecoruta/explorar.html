@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explora recorridos sostenibles seleccionados por EcoRuta Puebla." />
+    <title>Explorar rutas | EcoRuta Puebla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="EcoRuta Puebla, inicio">
+          <span class="brand-mark" aria-hidden="true">e</span><span>EcoRuta <strong>Puebla</strong></span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span class="sr-only">Abrir navegación</span><span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a class="active" href="explorar.html">Explorar rutas</a>
+          <a href="index.html#proyecto">El proyecto</a>
+          <a class="nav-cta" href="#rutas">Planear recorrido</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="explore-hero">
+        <div class="container explore-hero-grid">
+          <div class="reveal">
+            <p class="eyebrow"><span></span> Rutas seleccionadas</p>
+            <h1>Encuentra un plan que se parezca a ti.</h1>
+            <p>Filtra por experiencia y descubre una forma distinta de recorrer la ciudad.</p>
+          </div>
+          <div class="mini-map reveal delay-1" aria-label="Mapa ilustrado de rutas">
+            <span class="map-line line-a"></span><span class="map-line line-b"></span>
+            <span class="map-pin pin-a">1</span><span class="map-pin pin-b">2</span><span class="map-pin pin-c">3</span>
+            <div><strong>12 rutas</strong><small>listas para explorar</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rutas" class="section catalogue-section">
+        <div class="container">
+          <div class="filter-bar reveal" role="group" aria-label="Filtrar rutas">
+            <button class="filter-button active" type="button" data-filter="todas">Todas</button>
+            <button class="filter-button" type="button" data-filter="bicicleta">Bicicleta</button>
+            <button class="filter-button" type="button" data-filter="naturaleza">Naturaleza</button>
+            <button class="filter-button" type="button" data-filter="comunidad">Comunidad</button>
+          </div>
+
+          <div class="catalogue-grid">
+            <article class="catalogue-card reveal" data-category="bicicleta">
+              <img src="assets/images/ruta-bici.svg" alt="Ruta en bicicleta por una zona arbolada" />
+              <div class="catalogue-copy"><span>Bicicleta</span><h2>Circuito Aire Limpio</h2><p>4.2 km · 45 min · Fácil</p><button class="outline-button" type="button" data-route="Circuito Aire Limpio">Ver detalles</button></div>
+            </article>
+            <article class="catalogue-card reveal delay-1" data-category="naturaleza">
+              <img src="assets/images/ruta-jardin.svg" alt="Recorrido por jardines y huertos urbanos" />
+              <div class="catalogue-copy"><span>Naturaleza</span><h2>Jardines que alimentan</h2><p>3.1 km · 60 min · Fácil</p><button class="outline-button" type="button" data-route="Jardines que alimentan">Ver detalles</button></div>
+            </article>
+            <article class="catalogue-card reveal delay-2" data-category="comunidad">
+              <img src="assets/images/ruta-comunidad.svg" alt="Ruta por comercios y proyectos comunitarios" />
+              <div class="catalogue-copy"><span>Comunidad</span><h2>Origen local</h2><p>5.0 km · 75 min · Media</p><button class="outline-button" type="button" data-route="Origen local">Ver detalles</button></div>
+            </article>
+            <article class="catalogue-card reveal" data-category="bicicleta">
+              <img src="assets/images/ruta-rio.svg" alt="Ruta en bicicleta junto a un río" />
+              <div class="catalogue-copy"><span>Bicicleta</span><h2>Sendero del Atoyac</h2><p>7.8 km · 80 min · Media</p><button class="outline-button" type="button" data-route="Sendero del Atoyac">Ver detalles</button></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="planner-section">
+        <div class="container planner-grid">
+          <div>
+            <p class="eyebrow light"><span></span> Planificador rápido</p>
+            <h2>¿Qué tipo de día quieres vivir?</h2>
+            <p>Selecciona una opción y recibe una recomendación instantánea.</p>
+          </div>
+          <form class="planner-form" data-planner>
+            <label for="mood">Hoy quiero...</label>
+            <select id="mood" name="mood">
+              <option value="moverme">Moverme y sentir energía</option>
+              <option value="respirar">Respirar y conectar con la naturaleza</option>
+              <option value="conocer">Conocer proyectos locales</option>
+            </select>
+            <button class="button button-light" type="submit">Recomendar ruta</button>
+            <output class="planner-result" aria-live="polite"></output>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="route-dialog" data-dialog>
+      <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
+      <span class="dialog-kicker">EcoRuta recomienda</span>
+      <h2 data-dialog-title>Ruta seleccionada</h2>
+      <p>Este prototipo reservará aquí el recorrido, mostrará sus puntos de interés y permitirá guardarlo como favorito.</p>
+      <a class="button button-primary" href="index.html#proyecto">Conocer el proyecto</a>
+    </dialog>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a class="brand footer-brand" href="index.html"><span class="brand-mark">e</span><span>EcoRuta Puebla</span></a><p>Una propuesta académica para imaginar ciudades más humanas y sostenibles.</p></div>
+        <div class="footer-links"><a href="index.html">Inicio</a><a href="explorar.html">Explorar</a><a href="index.html#proyecto">Proyecto</a></div>
+        <p class="copyright">© <span data-year></span> Kevin Salas Jimarez · UTP</p>
+      </div>
+    </footer>
+  </body>
+</html>
