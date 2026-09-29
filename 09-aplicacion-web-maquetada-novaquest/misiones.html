@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Selecciona una experiencia espacial en el atlas interactivo de NovaQuest." />
+    <title>Misiones | NovaQuest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html" aria-label="NovaQuest, inicio"><span class="brand-symbol" aria-hidden="true"><i></i></span><span>Nova<strong>Quest</strong></span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir navegación</span><i></i><i></i><i></i></button>
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal"><a href="index.html">Inicio</a><a class="active" href="misiones.html">Misiones</a><a href="index.html#academia">Academia</a><a class="nav-button" href="#selector">Elegir misión</a></nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="atlas-hero">
+        <div class="container atlas-grid">
+          <div class="reveal"><p class="overline"><span>Atlas de misiones</span> Coordenadas abiertas</p><h1>¿Qué misterio quieres investigar hoy?</h1><p>Explora nuestra selección de destinos y abre una bitácora diseñada para despertar tu curiosidad.</p></div>
+          <div class="radar-card reveal delay-1" aria-label="Radar ilustrado de misiones"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div><span class="radar-dot d1"></span><span class="radar-dot d2"></span><span class="radar-dot d3"></span><strong>6</strong><small>misiones disponibles</small></div>
+        </div>
+      </section>
+
+      <section id="catalogo" class="section catalogue">
+        <div class="container">
+          <div class="filter-row reveal" role="group" aria-label="Filtrar misiones">
+            <button class="filter-button active" type="button" data-filter="todas">Todas</button>
+            <button class="filter-button" type="button" data-filter="rocoso">Mundos rocosos</button>
+            <button class="filter-button" type="button" data-filter="luna">Lunas</button>
+            <button class="filter-button" type="button" data-filter="gigante">Gigantes</button>
+          </div>
+          <div class="mission-grid">
+            <article class="mission-card coral reveal" data-category="rocoso"><div class="mission-top"><span>01</span><img src="assets/images/planeta-marte.svg" alt="Marte" /></div><div class="mission-copy"><small>Mundo rocoso · Nivel inicial</small><h2>Crónicas de Marte</h2><p>Reconstruye las señales del agua antigua y selecciona el mejor punto de exploración.</p><button type="button" data-mission="Crónicas de Marte">Abrir bitácora ↗</button></div></article>
+            <article class="mission-card blue reveal delay-1" data-category="luna"><div class="mission-top"><span>02</span><img src="assets/images/planeta-europa.svg" alt="Europa" /></div><div class="mission-copy"><small>Luna oceánica · Nivel medio</small><h2>Océano oculto</h2><p>Investiga el hielo de Europa y las pistas que podrían revelar un océano profundo.</p><button type="button" data-mission="Océano oculto">Abrir bitácora ↗</button></div></article>
+            <article class="mission-card violet reveal delay-2" data-category="gigante"><div class="mission-top"><span>03</span><img src="assets/images/planeta-saturno.svg" alt="Saturno" /></div><div class="mission-copy"><small>Gigante gaseoso · Nivel medio</small><h2>Arquitectura de anillos</h2><p>Analiza la estructura, el movimiento y los pequeños mundos que forman sus anillos.</p><button type="button" data-mission="Arquitectura de anillos">Abrir bitácora ↗</button></div></article>
+            <article class="mission-card gold reveal" data-category="rocoso"><div class="mission-top"><span>04</span><img src="assets/images/planeta-venus.svg" alt="Venus" /></div><div class="mission-copy"><small>Mundo rocoso · Nivel avanzado</small><h2>Nubes de Venus</h2><p>Compara atmósferas y descubre por qué un planeta parecido a la Tierra evolucionó distinto.</p><button type="button" data-mission="Nubes de Venus">Abrir bitácora ↗</button></div></article>
+            <article class="mission-card mint reveal delay-1" data-category="luna"><div class="mission-top"><span>05</span><img src="assets/images/planeta-titan.svg" alt="Titán" /></div><div class="mission-copy"><small>Luna con atmósfera · Nivel medio</small><h2>Lagos de Titán</h2><p>Diseña una ruta entre dunas, nubes y mares de hidrocarburos en la luna más singular.</p><button type="button" data-mission="Lagos de Titán">Abrir bitácora ↗</button></div></article>
+            <article class="mission-card sky reveal delay-2" data-category="gigante"><div class="mission-top"><span>06</span><img src="assets/images/planeta-neptuno.svg" alt="Neptuno" /></div><div class="mission-copy"><small>Gigante helado · Nivel avanzado</small><h2>Vientos de Neptuno</h2><p>Estudia uno de los climas más extremos y distantes del sistema solar.</p><button type="button" data-mission="Vientos de Neptuno">Abrir bitácora ↗</button></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="selector" class="selector-section">
+        <div class="container selector-grid">
+          <div><p class="overline light"><span>Selector de misión</span> Recomendación</p><h2>Traza tu propia trayectoria.</h2><p>Responde dos preguntas y obtén una misión inicial.</p></div>
+          <form class="selector-form" data-selector>
+            <label for="interest">¿Qué te interesa más?</label>
+            <select id="interest" name="interest"><option value="vida">Buscar condiciones para la vida</option><option value="geologia">Explorar superficies y volcanes</option><option value="atmosfera">Investigar atmósferas extremas</option></select>
+            <label for="time">Tiempo disponible</label>
+            <select id="time" name="time"><option value="breve">15 minutos</option><option value="media">30 minutos</option><option value="larga">Más de 45 minutos</option></select>
+            <button class="button button-coral" type="submit">Calcular trayectoria</button>
+            <output class="selector-result" aria-live="polite"></output>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="mission-dialog" data-dialog>
+      <button class="dialog-close" type="button" aria-label="Cerrar">×</button><span class="dialog-overline">Bitácora seleccionada</span><h2 data-dialog-title>Misión</h2><p>En una siguiente etapa esta pantalla incluirá objetivos, recursos, progreso y recompensas de aprendizaje.</p><a class="button button-primary" href="#selector">Trazar trayectoria</a>
+    </dialog>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="index.html"><span class="brand-symbol"><i></i></span><span>Nova<strong>Quest</strong></span></a><p>Una experiencia académica para explorar, preguntar y aprender.</p></div><nav aria-label="Navegación secundaria"><a href="index.html">Inicio</a><a href="misiones.html">Misiones</a><a href="index.html#academia">Academia</a></nav><p class="copyright">© <span data-year></span> Kevin Salas Jimarez · Universidad Tecnológica de Puebla</p></div></footer>
+  </body>
+</html>

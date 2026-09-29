@@ -13,6 +13,7 @@ Repositorio académico de **Kevin Salas Jimarez** (matrícula **2311080876**) pa
 | 05 | [Aplicación multiplataforma web NEXORA](./05-aplicacion-multiplataforma-nexora/) | Código React, evidencias de escritorio y móvil, y reporte académico. |
 | 06 | [Aplicación orientada a servicios ServiceHub](./06-aplicacion-orientada-servicios-servicehub/) | Panel SaaS, API REST en Python, evidencias y reporte académico. |
 | 08 | [Aplicación web maquetada EcoRuta Puebla](./08-aplicacion-web-maquetada-ecoruta/) | Sitio responsivo de dos páginas con navegación, imágenes, texto, video e interacciones. |
+| 09 | [Aplicación web maquetada NovaQuest](./09-aplicacion-web-maquetada-novaquest/) | Experiencia espacial responsiva con atlas de misiones, multimedia e interacciones. |
 
 Cada actividad se encuentra en su propia carpeta para mantener separados el código, las dependencias y la documentación de cada entrega.
 
