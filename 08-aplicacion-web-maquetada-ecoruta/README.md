@@ -11,6 +11,7 @@
 - Diseño responsivo para móvil, tableta y escritorio.
 - Carpetas separadas para estilos, scripts, imágenes y video.
 - Interacciones en JavaScript: menú móvil, filtros, modal y recomendador.
+- Manifiesto web enlazado desde ambas páginas con nombre, ruta inicial, alcance, modo de visualización, colores e iconos.
 
 ## Estructura
 
@@ -18,6 +19,7 @@
 08-aplicacion-web-maquetada-ecoruta/
 ├── assets/
 │   ├── images/
+│   ├── icons/
 │   └── video/
 ├── css/
 │   └── styles.css
@@ -25,6 +27,7 @@
 │   └── app.js
 ├── explorar.html
 ├── index.html
+├── manifest.json
 └── README.md
 ```
 
@@ -34,9 +37,11 @@ No requiere instalar dependencias. Se puede abrir con **Live Server** en VS Code
 
 La forma más directa es abrir la carpeta en VS Code, hacer clic derecho sobre `index.html` y seleccionar **Open with Live Server**.
 
-## Evolución futura
+## Fase actual de evolución a PWA
 
-La estructura permite añadir posteriormente un manifiesto, iconos, un service worker, almacenamiento local, instalación y funcionamiento sin conexión para convertirla en una aplicación web progresiva.
+Esta entrega incorpora `manifest.json` e iconos de 192 y 512 píxeles. El manifiesto define la identidad de EcoRuta, la dirección de inicio, el alcance, el modo de visualización y los colores que puede utilizar el navegador.
+
+El manifiesto es una fase preparatoria y no convierte por sí solo el sitio en una PWA completa. La instalación y el funcionamiento sin conexión se documentarán cuando se agreguen el service worker y la estrategia de caché.
 
 El video demostrativo se basa en el recurso de ejemplo utilizado por MDN en la documentación del elemento HTML `video`.
 
