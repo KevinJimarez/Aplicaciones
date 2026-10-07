@@ -36,6 +36,9 @@ button, select { font: inherit; }
 .main-nav > a:not(.nav-cta)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--green); transition: right .2s; }
 .main-nav > a:hover::after, .main-nav > a.active::after { right: 0; }
 .nav-cta { padding: 11px 17px; color: white; background: var(--deep); border-radius: 999px; }
+.install-button { padding: 10px 16px; color: var(--deep); background: var(--lime); border: 1px solid rgba(13,44,37,.14); border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 800; }
+.install-button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(13,44,37,.14); }
+[hidden] { display: none !important; }
 .menu-button { display: none; border: 0; background: transparent; padding: 8px; }
 .menu-button > span:not(.sr-only) { display: block; width: 24px; height: 2px; margin: 5px 0; background: var(--ink); }
 
@@ -173,6 +176,7 @@ h2 { font-size: clamp(36px, 4.4vw, 54px); }
   .main-nav a { padding: 10px; }
   .main-nav > a::after { display: none; }
   .nav-cta { text-align: center; }
+  .install-button { width: 100%; text-align: center; }
   .hero-grid, .story-grid, .explore-hero-grid, .planner-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 48px; }
   .hero-visual { min-height: 440px; }

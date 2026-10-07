@@ -8,9 +8,13 @@
       content="EcoRuta Puebla: descubre rutas urbanas sostenibles, espacios verdes y experiencias comunitarias."
     />
     <meta name="theme-color" content="#0d2c25" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="EcoRuta" />
     <title>EcoRuta Puebla | Explora una ciudad más verde</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="assets/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,6 +41,7 @@
           <a class="active" href="index.html">Inicio</a>
           <a href="explorar.html">Explorar rutas</a>
           <a href="#proyecto">El proyecto</a>
+          <button class="install-button" type="button" data-install hidden>Instalar app</button>
           <a class="nav-cta" href="explorar.html">Planear recorrido</a>
         </nav>
       </div>
@@ -153,14 +158,14 @@
             <p class="eyebrow"><span></span> Una idea que puede crecer</p>
             <h2>La tecnología también puede acercarnos a nuestro entorno.</h2>
             <p>
-              EcoRuta es una maqueta web pensada para evolucionar. En una siguiente etapa podría
-              guardar rutas favoritas, usar ubicación, funcionar sin conexión y enviar recordatorios
-              sobre actividades cercanas.
+              EcoRuta evolucionó a una aplicación web progresiva: puede instalarse y conserva sus
+              páginas principales sin conexión. En una siguiente etapa podría guardar rutas favoritas,
+              usar ubicación y enviar recordatorios sobre actividades cercanas.
             </p>
             <ul class="check-list">
               <li><span>✓</span> Diseño adaptable a móvil, tableta y escritorio.</li>
               <li><span>✓</span> Contenido multimedia con imágenes y video.</li>
-              <li><span>✓</span> Estructura preparada para convertirse en PWA.</li>
+              <li><span>✓</span> PWA instalable con manifiesto y Service Worker.</li>
             </ul>
           </div>
         </div>

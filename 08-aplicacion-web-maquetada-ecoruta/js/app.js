@@ -67,3 +67,56 @@ document.querySelector("[data-planner]")?.addEventListener("submit", (event) => 
   const form = event.currentTarget;
   form.querySelector(".planner-result").textContent = recommendations[form.elements.mood.value];
 });
+
+// Registra el Service Worker únicamente cuando el navegador ofrece esta API.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("./service-worker.js", { scope: "./" });
+      console.info("EcoRuta: Service Worker registrado correctamente.");
+    } catch (error) {
+      console.error("EcoRuta: no fue posible registrar el Service Worker.", error);
+    }
+  });
+}
+
+// Guarda temporalmente el evento de instalación que Chrome entrega a la página.
+let deferredInstallPrompt = null;
+const installButtons = document.querySelectorAll("[data-install]");
+const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+
+// Muestra el botón propio cuando Chrome confirma que la PWA cumple los requisitos.
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installButtons.forEach((button) => { button.hidden = false; });
+});
+
+// En iPhone no existe beforeinstallprompt; se ofrece la guía del menú Compartir.
+if (isIos && !isStandalone) {
+  installButtons.forEach((button) => { button.hidden = false; });
+}
+
+installButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      button.hidden = true;
+      return;
+    }
+
+    if (isIos) {
+      window.alert("Para instalar EcoRuta en iPhone: abre Compartir y elige Agregar a pantalla de inicio.");
+    }
+  });
+});
+
+// Oculta el control cuando la instalación termina satisfactoriamente.
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  installButtons.forEach((button) => { button.hidden = true; });
+  console.info("EcoRuta: aplicación instalada.");
+});

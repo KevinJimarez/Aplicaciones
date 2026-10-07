@@ -1,6 +1,6 @@
 # Subproducto 08 - Aplicación web maquetada
 
-**EcoRuta Puebla** es una maqueta web responsiva para descubrir rutas urbanas sostenibles, espacios verdes y proyectos comunitarios. Esta entrega funciona como base visual de una aplicación que después puede evolucionar a PWA.
+**EcoRuta Puebla** es una aplicación web progresiva responsiva para descubrir rutas urbanas sostenibles, espacios verdes y proyectos comunitarios. Puede instalarse desde un navegador compatible y conserva su interfaz principal sin conexión después de la primera visita.
 
 ## Requisitos cubiertos
 
@@ -12,6 +12,8 @@
 - Carpetas separadas para estilos, scripts, imágenes y video.
 - Interacciones en JavaScript: menú móvil, filtros, modal y recomendador.
 - Manifiesto web enlazado desde ambas páginas con nombre, ruta inicial, alcance, modo de visualización, colores e iconos.
+- Service Worker con precaché, actualización de recursos y limpieza de versiones anteriores.
+- Instalación desde Chrome en computadora y desde la opción Agregar a pantalla de inicio en iPhone.
 
 ## Estructura
 
@@ -28,6 +30,7 @@
 ├── explorar.html
 ├── index.html
 ├── manifest.json
+├── service-worker.js
 └── README.md
 ```
 
@@ -37,11 +40,11 @@ No requiere instalar dependencias. Se puede abrir con **Live Server** en VS Code
 
 La forma más directa es abrir la carpeta en VS Code, hacer clic derecho sobre `index.html` y seleccionar **Open with Live Server**.
 
-## Fase actual de evolución a PWA
+## Implementación PWA
 
-Esta entrega incorpora `manifest.json` e iconos de 192 y 512 píxeles. El manifiesto define la identidad de EcoRuta, la dirección de inicio, el alcance, el modo de visualización y los colores que puede utilizar el navegador.
+Esta entrega incorpora `manifest.json`, iconos de 192 y 512 píxeles y `service-worker.js`. El manifiesto define la identidad de EcoRuta, la dirección de inicio, el alcance, el modo de visualización y los colores que utiliza el navegador.
 
-El manifiesto es una fase preparatoria y no convierte por sí solo el sitio en una PWA completa. La instalación y el funcionamiento sin conexión se documentarán cuando se agreguen el service worker y la estrategia de caché.
+El Service Worker guarda el núcleo de la aplicación, actualiza recursos consultados y permite abrir las páginas principales sin conexión. La instalación requiere servir el proyecto mediante `localhost` o HTTPS; GitHub Pages proporciona el HTTPS necesario para probarlo desde computadora y móvil.
 
 El video demostrativo se basa en el recurso de ejemplo utilizado por MDN en la documentación del elemento HTML `video`.
 
