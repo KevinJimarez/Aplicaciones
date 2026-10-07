@@ -46,6 +46,10 @@ Esta entrega incorpora `manifest.json`, iconos de 192 y 512 píxeles y `service-
 
 El Service Worker guarda el núcleo de la aplicación, actualiza recursos consultados y permite abrir las páginas principales sin conexión. La instalación requiere servir el proyecto mediante `localhost` o HTTPS; GitHub Pages proporciona el HTTPS necesario para probarlo desde computadora y móvil.
 
+## URL pública
+
+https://kevinjimarez.github.io/Aplicaciones/
+
 El video demostrativo se basa en el recurso de ejemplo utilizado por MDN en la documentación del elemento HTML `video`.
 
 Autor: Kevin Salas Jimarez - Matrícula 2311080876.
