@@ -1,13 +1,17 @@
-// Nombre versionado de la caché. Cambiar v1 a v2 fuerza una actualización controlada.
-const CACHE_NAME = "ecoruta-shell-v1";
+// Nombre versionado de la caché. La versión 2 incorpora el CRUD de usuarios.
+const CACHE_NAME = "ecoruta-shell-v2";
 
 // Recursos mínimos que permiten abrir y recorrer EcoRuta sin conexión.
 const APP_SHELL = [
   "./",
   "./index.html",
   "./explorar.html",
+  "./usuarios.html",
   "./css/styles.css",
   "./js/app.js",
+  "./js/database.js",
+  "./js/supabase-config.js",
+  "./js/usuarios.js",
   "./manifest.json",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
