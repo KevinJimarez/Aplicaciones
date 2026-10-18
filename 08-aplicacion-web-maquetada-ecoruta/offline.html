@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d2c25" />
+    <title>EcoRuta | Sin conexión</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f7f5ec;
+        color: #0d2c25;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+
+      main {
+        width: min(520px, 100%);
+        padding: 40px;
+        border: 1px solid #d8e7df;
+        border-radius: 24px;
+        background: #fffdf7;
+        box-shadow: 0 24px 70px rgba(13, 44, 37, 0.12);
+      }
+
+      .badge {
+        display: inline-grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 22px;
+        border-radius: 14px;
+        background: #b9f54b;
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 8vw, 3.25rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0 0 28px;
+        color: #50655f;
+        line-height: 1.65;
+      }
+
+      a {
+        display: inline-block;
+        padding: 13px 20px;
+        border-radius: 999px;
+        background: #0d2c25;
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="badge" aria-hidden="true">e</span>
+      <h1>Continúa tu ruta sin conexión.</h1>
+      <p>
+        EcoRuta no pudo comunicarse con la red. Las páginas y recursos guardados en caché
+        siguen disponibles; vuelve al inicio para continuar explorando.
+      </p>
+      <a href="./index.html">Volver al inicio</a>
+    </main>
+  </body>
+</html>
