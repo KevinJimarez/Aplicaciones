@@ -2,7 +2,7 @@
 const CACHE_PREFIX = "ecoruta";
 
 // La versión cambia cuando se modifica el contenido que debe quedar disponible sin conexión.
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3";
 
 // La caché del shell conserva los archivos indispensables para abrir la PWA.
 const SHELL_CACHE = `${CACHE_PREFIX}-shell-${CACHE_VERSION}`;

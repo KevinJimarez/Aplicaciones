@@ -9,6 +9,7 @@ const formTitle = document.querySelector("[data-form-title]");
 const submitButton = document.querySelector("[data-submit-button]");
 const cancelButton = document.querySelector("[data-cancel-edit]");
 const storageMode = document.querySelector("[data-storage-mode]");
+const refreshButton = document.querySelector("[data-refresh-records]");
 
 let records = [];
 
@@ -83,11 +84,19 @@ const renderRecords = () => {
 };
 
 const loadRecords = async () => {
+  recordsBody.setAttribute("aria-busy", "true");
+  refreshButton.disabled = true;
+  refreshButton.textContent = "Consultando…";
+
   try {
     records = await database.list();
     renderRecords();
   } catch (error) {
     showMessage(`No fue posible consultar los usuarios: ${error.message}`, "error");
+  } finally {
+    recordsBody.removeAttribute("aria-busy");
+    refreshButton.disabled = false;
+    refreshButton.textContent = "Actualizar lista";
   }
 };
 
@@ -169,6 +178,11 @@ recordsBody.addEventListener("click", async (event) => {
 cancelButton.addEventListener("click", () => {
   resetForm();
   showMessage("Edición cancelada.");
+});
+
+refreshButton.addEventListener("click", async () => {
+  await loadRecords();
+  showMessage("Lista consultada y actualizada correctamente.");
 });
 
 loadRecords();

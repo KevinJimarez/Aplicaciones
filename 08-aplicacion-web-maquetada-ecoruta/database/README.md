@@ -37,9 +37,9 @@ Supabase proporciona una base PostgreSQL accesible mediante HTTPS. La PWA envía
 1. Crear un proyecto gratuito en Supabase.
 2. Abrir **SQL Editor**.
 3. Ejecutar el contenido de `supabase.sql`.
-4. Abrir **Project Settings > API**.
+4. Abrir el botón **Connect** o **Settings > API Keys**.
 5. Copiar la URL del proyecto.
-6. Copiar la clave pública `anon`.
+6. Copiar la clave pública `publishable` (`sb_publishable_...`).
 7. Colocar ambos valores en `../js/supabase-config.js`.
 8. Incrementar la versión de `CACHE_NAME` en `../service-worker.js`.
 9. Publicar los cambios.
@@ -49,10 +49,10 @@ Ejemplo de configuración:
 ```js
 export const SUPABASE_CONFIG = {
   url: "https://proyecto.supabase.co",
-  anonKey: "clave-publica-anon"
+  publishableKey: "sb_publishable_clave-publica"
 };
 ```
 
-La clave `anon` puede estar en el frontend porque sus permisos están limitados mediante Row Level Security. La clave `service_role` es privada y nunca debe copiarse al proyecto ni al repositorio.
+La clave `publishable` puede estar en el frontend porque sus permisos están limitados mediante Row Level Security. La clave `secret` y la clave heredada `service_role` son privadas y nunca deben copiarse al proyecto ni al repositorio.
 
 Las políticas SQL incluidas permiten que cualquier visitante realice el CRUD para fines de demostración. Solo deben utilizarse datos ficticios. En una aplicación real se requeriría autenticación y políticas asociadas a cada usuario.

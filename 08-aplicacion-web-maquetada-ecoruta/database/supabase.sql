@@ -16,6 +16,11 @@ create unique index if not exists suscriptores_email_unique
 
 alter table public.suscriptores enable row level security;
 
+-- Permisos explícitos para la Data API. La clave pública entra con el rol anon.
+revoke all on table public.suscriptores from anon, authenticated;
+grant select, insert, update, delete on table public.suscriptores to anon;
+grant all on table public.suscriptores to service_role;
+
 -- Políticas abiertas únicamente para esta demostración académica.
 -- No utilizar con datos personales reales ni en una aplicación de producción.
 drop policy if exists "demo_select_suscriptores" on public.suscriptores;

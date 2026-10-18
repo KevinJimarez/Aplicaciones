@@ -1,7 +1,7 @@
 // Configuración pública de Supabase.
-// La clave anon puede usarse en el navegador únicamente con Row Level Security activado.
-// Nunca coloques aquí la clave service_role.
+// La publishable key puede estar en el navegador si Row Level Security está activado.
+// Nunca coloques aquí una secret key ni la clave heredada service_role.
 export const SUPABASE_CONFIG = {
   url: "",
-  anonKey: ""
+  publishableKey: ""
 };

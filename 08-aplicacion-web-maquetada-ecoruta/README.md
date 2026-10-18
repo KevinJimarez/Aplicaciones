@@ -62,10 +62,10 @@ Para compartir los registros entre dispositivos se utiliza Supabase, que proporc
 
 1. Crear un proyecto en Supabase.
 2. Ejecutar `database/supabase.sql` desde SQL Editor.
-3. Copiar la URL del proyecto y la clave pública `anon` en `js/supabase-config.js`.
+3. Copiar la URL del proyecto y la clave `publishable` en `js/supabase-config.js`.
 4. Cambiar el nombre de la caché del Service Worker al publicar una nueva configuración.
 
-La aplicación detecta automáticamente la configuración. Si existe, envía solicitudes HTTP a Supabase; si no existe, trabaja con IndexedDB. La clave `service_role` nunca debe publicarse. Las políticas incluidas permiten CRUD anónimo solamente para esta demostración académica y no deben utilizarse con información personal real.
+La aplicación detecta automáticamente la configuración. Si existe, envía solicitudes HTTP a Supabase; si no existe, trabaja con IndexedDB. Las claves `secret` y `service_role` nunca deben publicarse. Las políticas incluidas permiten CRUD anónimo solamente para esta demostración académica y no deben utilizarse con información personal real.
 
 ## URL pública
 

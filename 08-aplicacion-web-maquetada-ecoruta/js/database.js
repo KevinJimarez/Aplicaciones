@@ -4,15 +4,26 @@ const DB_NAME = "ecoruta-db";
 const DB_VERSION = 1;
 const STORE_NAME = "suscriptores";
 
-const supabaseReady = () =>
-  SUPABASE_CONFIG.url.startsWith("https://") && SUPABASE_CONFIG.anonKey.length > 20;
+const publicApiKey = SUPABASE_CONFIG.publishableKey || SUPABASE_CONFIG.anonKey || "";
 
-const supabaseHeaders = (extra = {}) => ({
-  apikey: SUPABASE_CONFIG.anonKey,
-  Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`,
-  "Content-Type": "application/json",
-  ...extra
-});
+const supabaseReady = () =>
+  /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(SUPABASE_CONFIG.url) && publicApiKey.length > 20;
+
+const supabaseHeaders = (extra = {}) => {
+  const headers = {
+    apikey: publicApiKey,
+    "Content-Type": "application/json",
+    ...extra
+  };
+
+  // Las claves anon heredadas son JWT y se envían también como Bearer.
+  // Las publishable keys modernas solo necesitan el encabezado apikey.
+  if (publicApiKey.startsWith("eyJ")) {
+    headers.Authorization = `Bearer ${publicApiKey}`;
+  }
+
+  return headers;
+};
 
 const supabaseRequest = async (path, options = {}) => {
   const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/${path}`, {
