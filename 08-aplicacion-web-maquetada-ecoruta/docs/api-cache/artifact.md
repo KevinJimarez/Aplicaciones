@@ -9,6 +9,7 @@
 - Tablas: encabezado verde oscuro con texto blanco y filas claras alternadas.
 - Código: tipografía monoespaciada; capturas con números de línea y contraste alto.
 - Evidencia: cada característica o método implementado se acompaña por una figura específica, con título y explicación.
+- Estructura de comprobación: las características se numeran como C1–C6 y cada una se enlaza de forma explícita con “Evidencia 1” a “Evidencia 6”.
 - Pie de página: nombre del estudiante, asignatura y número de página.
 
 El documento nuevo conserva la portada, la identidad institucional y el sistema tipográfico del reporte anterior; se sustituye el contenido por la actividad “Subproducto No. 4 - API caché”.
