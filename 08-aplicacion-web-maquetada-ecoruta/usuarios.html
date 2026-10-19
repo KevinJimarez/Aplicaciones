@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Administra las personas interesadas en recibir novedades de EcoRuta Puebla."
+    />
+    <meta name="theme-color" content="#0d2c25" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="EcoRuta" />
+    <title>Comunidad | EcoRuta Puebla</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="assets/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/app.js" defer></script>
+    <script type="module" src="js/usuarios.js?v=7"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="EcoRuta Puebla, inicio">
+          <span class="brand-mark" aria-hidden="true">e</span>
+          <span>EcoRuta <strong>Puebla</strong></span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span class="sr-only">Abrir navegación</span><span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar rutas</a>
+          <a class="active" href="usuarios.html">Comunidad</a>
+          <a href="index.html#proyecto">El proyecto</a>
+          <button class="install-button" type="button" data-install hidden>Instalar app</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="community-hero">
+        <div class="container community-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span> Base de datos EcoRuta</p>
+            <h1>Una comunidad que quiere recorrer mejor la ciudad.</h1>
+            <p>
+              Las personas pueden registrar su interés desde cualquier dispositivo. La consulta,
+              actualización y eliminación se reservan al acceso administrativo.
+            </p>
+          </div>
+          <div class="database-status" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <div><small>Conexión actual</small><strong data-storage-mode>Comprobando…</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section community-section">
+        <div class="container crud-layout">
+          <article class="form-card reveal">
+            <p class="eyebrow"><span></span> Formulario</p>
+            <h2 data-form-title>Registrar interés</h2>
+            <p class="form-intro">Utiliza datos de demostración. No captures información sensible.</p>
+
+            <form class="subscriber-form" data-subscriber-form novalidate>
+              <input type="hidden" name="id" />
+
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" minlength="2" maxlength="80" required />
+
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" maxlength="120" required />
+
+              <label for="interes">Interés principal</label>
+              <select id="interes" name="interes" required>
+                <option value="">Selecciona una opción</option>
+                <option value="bicicleta">Rutas en bicicleta</option>
+                <option value="naturaleza">Naturaleza y jardines</option>
+                <option value="comunidad">Proyectos comunitarios</option>
+              </select>
+
+              <label class="checkbox-field" for="recibir_actualizaciones">
+                <input id="recibir_actualizaciones" name="recibir_actualizaciones" type="checkbox" />
+                <span>Desea recibir actualizaciones de EcoRuta</span>
+              </label>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit" data-submit-button>Enviar registro</button>
+                <button class="outline-button" type="button" data-cancel-edit hidden>Cancelar edición</button>
+              </div>
+              <p class="form-message" data-form-message role="status" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <article class="records-card reveal delay-1">
+            <div class="admin-gate" data-admin-gate>
+              <p class="eyebrow"><span></span> Administración protegida</p>
+              <h2>Gestionar registros</h2>
+              <p class="form-intro">
+                Inicia sesión para consultar, actualizar o eliminar datos. Las políticas RLS de
+                Supabase bloquean estas operaciones para visitantes.
+              </p>
+              <form class="subscriber-form admin-login-form" data-admin-login>
+                <label for="admin_email">Correo administrativo</label>
+                <input id="admin_email" name="admin_email" type="email" autocomplete="username" required />
+                <label for="admin_password">Contraseña</label>
+                <input
+                  id="admin_password"
+                  name="admin_password"
+                  type="password"
+                  autocomplete="current-password"
+                  minlength="8"
+                  required
+                />
+                <button class="button button-primary" type="submit">Entrar como administrador</button>
+                <p class="form-message" data-login-message role="status" aria-live="polite"></p>
+              </form>
+            </div>
+
+            <div data-records-panel hidden>
+              <div class="records-heading">
+                <div>
+                  <p class="eyebrow"><span></span> Registros protegidos</p>
+                  <h2>Usuarios guardados</h2>
+                  <small class="admin-identity" data-admin-identity></small>
+                </div>
+                <div class="records-tools">
+                  <span class="record-count" data-record-count>0 registros</span>
+                  <button class="outline-button refresh-button" type="button" data-refresh-records>
+                    Actualizar lista
+                  </button>
+                  <button class="outline-button refresh-button" type="button" data-admin-logout>
+                    Cerrar sesión
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table class="records-table">
+                  <thead>
+                    <tr>
+                      <th>Usuario</th>
+                      <th>Interés</th>
+                      <th>Actualizaciones</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody data-records-body></tbody>
+                </table>
+                <p class="empty-state" data-empty-state>No hay usuarios registrados todavía.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="crud-explanation">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> Funcionamiento</p>
+              <h2>Las cuatro operaciones de una base de datos.</h2>
+            </div>
+          </div>
+          <div class="crud-steps">
+            <article><span>01</span><strong>Crear</strong><p>El formulario inserta un usuario nuevo.</p></article>
+            <article><span>02</span><strong>Leer</strong><p>La tabla consulta y muestra los registros.</p></article>
+            <article><span>03</span><strong>Actualizar</strong><p>Editar modifica un registro existente.</p></article>
+            <article><span>04</span><strong>Eliminar</strong><p>Eliminar retira el registro seleccionado.</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="index.html"><span class="brand-mark">e</span><span>EcoRuta Puebla</span></a>
+          <p>Una propuesta académica para imaginar ciudades más humanas y sostenibles.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a><a href="explorar.html">Explorar</a><a href="usuarios.html">Comunidad</a>
+        </div>
+        <p class="copyright">© <span data-year></span> Kevin Salas Jimarez · UTP</p>
+      </div>
+    </footer>
+  </body>
+</html>

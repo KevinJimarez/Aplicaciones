@@ -14,6 +14,8 @@
 - Manifiesto web enlazado desde ambas páginas con nombre, ruta inicial, alcance, modo de visualización, colores e iconos.
 - Service Worker con precaché, actualización de recursos y limpieza de versiones anteriores.
 - Instalación desde Chrome en computadora y desde la opción Agregar a pantalla de inicio en iPhone.
+- CRUD de usuarios para crear, consultar, actualizar y eliminar registros.
+- Persistencia inmediata con IndexedDB y conexión preparada para Supabase/PostgreSQL.
 
 ## Estructura
 
@@ -26,9 +28,15 @@
 ├── css/
 │   └── styles.css
 ├── js/
-│   └── app.js
+│   ├── app.js
+│   ├── database.js
+│   ├── supabase-config.js
+│   └── usuarios.js
+├── database/
+│   └── supabase.sql
 ├── explorar.html
 ├── index.html
+├── usuarios.html
 ├── manifest.json
 ├── service-worker.js
 └── README.md
@@ -45,6 +53,19 @@ La forma más directa es abrir la carpeta en VS Code, hacer clic derecho sobre `
 Esta entrega incorpora `manifest.json`, iconos de 192 y 512 píxeles y `service-worker.js`. El manifiesto define la identidad de EcoRuta, la dirección de inicio, el alcance, el modo de visualización y los colores que utiliza el navegador.
 
 El Service Worker guarda el núcleo de la aplicación, actualiza recursos consultados y permite abrir las páginas principales sin conexión. La instalación requiere servir el proyecto mediante `localhost` o HTTPS; GitHub Pages proporciona el HTTPS necesario para probarlo desde computadora y móvil.
+
+## Base de datos y CRUD
+
+La página `usuarios.html` implementa las operaciones CRUD sobre una base PostgreSQL real. Cualquier visitante puede registrar su interés; consultar, actualizar y eliminar requiere una sesión administrativa.
+
+Para compartir los registros entre dispositivos se utiliza Supabase, que proporciona PostgreSQL y una API REST compatible con GitHub Pages. El procedimiento es:
+
+1. Crear un proyecto en Supabase.
+2. Ejecutar `database/supabase.sql` desde SQL Editor.
+3. Copiar la URL del proyecto y la clave `publishable` en `js/supabase-config.js`.
+4. Cambiar el nombre de la caché del Service Worker al publicar una nueva configuración.
+
+La aplicación envía solicitudes HTTPS a la Data API de Supabase. La clave `publishable` identifica a la PWA y las políticas RLS determinan qué puede hacer cada sesión. Las claves `secret` y `service_role` nunca se publican. `database/consultas-demostracion.sql` contiene ejemplos directos de `INSERT`, `SELECT`, `UPDATE` y `DELETE`.
 
 ## URL pública
 
