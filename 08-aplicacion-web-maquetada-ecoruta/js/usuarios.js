@@ -1,4 +1,4 @@
-import { database } from "./database.js";
+import { database } from "./database.js?v=7";
 
 const form = document.querySelector("[data-subscriber-form]");
 const recordsBody = document.querySelector("[data-records-body]");
@@ -10,11 +10,18 @@ const submitButton = document.querySelector("[data-submit-button]");
 const cancelButton = document.querySelector("[data-cancel-edit]");
 const storageMode = document.querySelector("[data-storage-mode]");
 const refreshButton = document.querySelector("[data-refresh-records]");
+const loginForm = document.querySelector("[data-admin-login]");
+const loginMessage = document.querySelector("[data-login-message]");
+const adminGate = document.querySelector("[data-admin-gate]");
+const recordsPanel = document.querySelector("[data-records-panel]");
+const adminIdentity = document.querySelector("[data-admin-identity]");
+const logoutButton = document.querySelector("[data-admin-logout]");
 
 let records = [];
+let currentAdmin = null;
 
 storageMode.textContent =
-  database.mode === "supabase" ? "Supabase · PostgreSQL en línea" : "IndexedDB · Base local de la PWA";
+  database.mode === "supabase" ? "Supabase · PostgreSQL en línea" : "Supabase pendiente de configurar";
 
 const interestLabels = {
   bicicleta: "Bicicleta",
@@ -22,16 +29,16 @@ const interestLabels = {
   comunidad: "Comunidad"
 };
 
-const showMessage = (message, type = "success") => {
-  formMessage.textContent = message;
-  formMessage.dataset.type = type;
+const showMessage = (element, message, type = "success") => {
+  element.textContent = message;
+  element.dataset.type = type;
 };
 
 const resetForm = () => {
   form.reset();
   form.elements.id.value = "";
-  formTitle.textContent = "Registrar usuario";
-  submitButton.textContent = "Guardar usuario";
+  formTitle.textContent = "Registrar interés";
+  submitButton.textContent = "Enviar registro";
   cancelButton.hidden = true;
 };
 
@@ -84,6 +91,8 @@ const renderRecords = () => {
 };
 
 const loadRecords = async () => {
+  if (!currentAdmin) return;
+
   recordsBody.setAttribute("aria-busy", "true");
   refreshButton.disabled = true;
   refreshButton.textContent = "Consultando…";
@@ -92,7 +101,7 @@ const loadRecords = async () => {
     records = await database.list();
     renderRecords();
   } catch (error) {
-    showMessage(`No fue posible consultar los usuarios: ${error.message}`, "error");
+    showMessage(loginMessage, `No fue posible consultar: ${error.message}`, "error");
   } finally {
     recordsBody.removeAttribute("aria-busy");
     refreshButton.disabled = false;
@@ -100,9 +109,23 @@ const loadRecords = async () => {
   }
 };
 
+const updateAdminView = async () => {
+  currentAdmin = await database.currentUser();
+  adminGate.hidden = Boolean(currentAdmin);
+  recordsPanel.hidden = !currentAdmin;
+
+  if (currentAdmin) {
+    adminIdentity.textContent = currentAdmin.email;
+    await loadRecords();
+  } else {
+    records = [];
+    renderRecords();
+  }
+};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  showMessage("");
+  showMessage(formMessage, "");
 
   if (!form.checkValidity()) {
     form.reportValidity();
@@ -118,24 +141,50 @@ form.addEventListener("submit", async (event) => {
   };
 
   submitButton.disabled = true;
-  submitButton.textContent = id ? "Actualizando…" : "Guardando…";
+  submitButton.textContent = id ? "Actualizando…" : "Enviando…";
 
   try {
     if (id) {
       await database.update(id, data);
-      showMessage("Usuario actualizado correctamente.");
+      showMessage(formMessage, "Usuario actualizado correctamente.");
     } else {
       await database.create(data);
-      showMessage("Usuario registrado correctamente.");
+      showMessage(formMessage, "Registro enviado correctamente a Supabase.");
     }
     resetForm();
-    await loadRecords();
+    if (currentAdmin) await loadRecords();
   } catch (error) {
     const duplicate = /unique|constraint|correo|email/i.test(error.message);
-    showMessage(duplicate ? "Ese correo ya se encuentra registrado." : `No fue posible guardar: ${error.message}`, "error");
+    showMessage(
+      formMessage,
+      duplicate ? "Ese correo ya se encuentra registrado." : `No fue posible guardar: ${error.message}`,
+      "error"
+    );
   } finally {
     submitButton.disabled = false;
-    if (!form.elements.id.value) submitButton.textContent = "Guardar usuario";
+    if (!form.elements.id.value) submitButton.textContent = "Enviar registro";
+  }
+});
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  showMessage(loginMessage, "");
+  const button = loginForm.querySelector("button[type='submit']");
+  button.disabled = true;
+  button.textContent = "Ingresando…";
+
+  try {
+    await database.signIn(
+      loginForm.elements.admin_email.value.trim().toLowerCase(),
+      loginForm.elements.admin_password.value
+    );
+    loginForm.reset();
+    await updateAdminView();
+  } catch (error) {
+    showMessage(loginMessage, `Acceso rechazado: ${error.message}`, "error");
+  } finally {
+    button.disabled = false;
+    button.textContent = "Entrar como administrador";
   }
 });
 
@@ -166,23 +215,30 @@ recordsBody.addEventListener("click", async (event) => {
 
     try {
       await database.remove(record.id);
-      showMessage("Usuario eliminado correctamente.");
+      showMessage(formMessage, "Usuario eliminado correctamente.");
       if (form.elements.id.value === record.id) resetForm();
       await loadRecords();
     } catch (error) {
-      showMessage(`No fue posible eliminar: ${error.message}`, "error");
+      showMessage(formMessage, `No fue posible eliminar: ${error.message}`, "error");
     }
   }
 });
 
 cancelButton.addEventListener("click", () => {
   resetForm();
-  showMessage("Edición cancelada.");
+  showMessage(formMessage, "Edición cancelada.");
 });
 
 refreshButton.addEventListener("click", async () => {
   await loadRecords();
-  showMessage("Lista consultada y actualizada correctamente.");
+  showMessage(formMessage, "Lista consultada y actualizada correctamente.");
 });
 
-loadRecords();
+logoutButton.addEventListener("click", async () => {
+  await database.signOut();
+  resetForm();
+  showMessage(formMessage, "Sesión administrativa cerrada.");
+  await updateAdminView();
+});
+
+updateAdminView();

@@ -56,7 +56,7 @@ El Service Worker guarda el núcleo de la aplicación, actualiza recursos consul
 
 ## Base de datos y CRUD
 
-La página `usuarios.html` implementa las operaciones CRUD: crear, leer, actualizar y eliminar usuarios interesados en EcoRuta. Sin configuración externa utiliza IndexedDB, una base de datos local incluida en el navegador, por lo que el ejercicio funciona inmediatamente y sin conexión en cada dispositivo.
+La página `usuarios.html` implementa las operaciones CRUD sobre una base PostgreSQL real. Cualquier visitante puede registrar su interés; consultar, actualizar y eliminar requiere una sesión administrativa.
 
 Para compartir los registros entre dispositivos se utiliza Supabase, que proporciona PostgreSQL y una API REST compatible con GitHub Pages. El procedimiento es:
 
@@ -65,7 +65,7 @@ Para compartir los registros entre dispositivos se utiliza Supabase, que proporc
 3. Copiar la URL del proyecto y la clave `publishable` en `js/supabase-config.js`.
 4. Cambiar el nombre de la caché del Service Worker al publicar una nueva configuración.
 
-La aplicación detecta automáticamente la configuración. Si existe, envía solicitudes HTTP a Supabase; si no existe, trabaja con IndexedDB. Las claves `secret` y `service_role` nunca deben publicarse. Las políticas incluidas permiten CRUD anónimo solamente para esta demostración académica y no deben utilizarse con información personal real.
+La aplicación envía solicitudes HTTPS a la Data API de Supabase. La clave `publishable` identifica a la PWA y las políticas RLS determinan qué puede hacer cada sesión. Las claves `secret` y `service_role` nunca se publican. `database/consultas-demostracion.sql` contiene ejemplos directos de `INSERT`, `SELECT`, `UPDATE` y `DELETE`.
 
 ## URL pública
 
