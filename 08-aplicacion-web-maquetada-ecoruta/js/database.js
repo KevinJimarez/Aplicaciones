@@ -1,4 +1,4 @@
-import { SUPABASE_CONFIG } from "./supabase-config.js?v=7";
+import { SUPABASE_CONFIG } from "./supabase-config.js?v=8";
 
 const SESSION_KEY = "ecoruta-admin-session";
 const publicApiKey = SUPABASE_CONFIG.publishableKey || "";

@@ -1,4 +1,4 @@
-import { database } from "./database.js?v=7";
+import { database } from "./database.js?v=8";
 
 const form = document.querySelector("[data-subscriber-form]");
 const recordsBody = document.querySelector("[data-records-body]");
@@ -21,7 +21,7 @@ let records = [];
 let currentAdmin = null;
 
 storageMode.textContent =
-  database.mode === "supabase" ? "Supabase · PostgreSQL en línea" : "Supabase pendiente de configurar";
+  database.mode === "supabase" ? "En línea" : "Temporalmente no disponible";
 
 const interestLabels = {
   bicicleta: "Bicicleta",

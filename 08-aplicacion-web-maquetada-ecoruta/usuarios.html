@@ -23,7 +23,7 @@
     />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/app.js" defer></script>
-    <script type="module" src="js/usuarios.js?v=7"></script>
+    <script type="module" src="js/usuarios.js?v=8"></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -51,16 +51,15 @@
       <section class="community-hero">
         <div class="container community-heading reveal">
           <div>
-            <p class="eyebrow"><span></span> Base de datos EcoRuta</p>
+            <p class="eyebrow"><span></span> Comunidad EcoRuta</p>
             <h1>Una comunidad que quiere recorrer mejor la ciudad.</h1>
             <p>
-              Las personas pueden registrar su interés desde cualquier dispositivo. La consulta,
-              actualización y eliminación se reservan al acceso administrativo.
+              Comparte tus intereses para recibir rutas, actividades y novedades pensadas para ti.
             </p>
           </div>
           <div class="database-status" aria-live="polite">
             <span class="status-dot" aria-hidden="true"></span>
-            <div><small>Conexión actual</small><strong data-storage-mode>Comprobando…</strong></div>
+              <div><small>Registro disponible</small><strong data-storage-mode>Comprobando…</strong></div>
           </div>
         </div>
       </section>
@@ -68,9 +67,8 @@
       <section class="section community-section">
         <div class="container crud-layout">
           <article class="form-card reveal">
-            <p class="eyebrow"><span></span> Formulario</p>
+            <p class="eyebrow"><span></span> Únete a la comunidad</p>
             <h2 data-form-title>Registrar interés</h2>
-            <p class="form-intro">Utiliza datos de demostración. No captures información sensible.</p>
 
             <form class="subscriber-form" data-subscriber-form novalidate>
               <input type="hidden" name="id" />
@@ -104,11 +102,10 @@
 
           <article class="records-card reveal delay-1">
             <div class="admin-gate" data-admin-gate>
-              <p class="eyebrow"><span></span> Administración protegida</p>
-              <h2>Gestionar registros</h2>
+              <p class="eyebrow"><span></span> Acceso interno</p>
+              <h2>¿Eres administrador?</h2>
               <p class="form-intro">
-                Inicia sesión para consultar, actualizar o eliminar datos. Las políticas RLS de
-                Supabase bloquean estas operaciones para visitantes.
+                Inicia sesión aquí para gestionar los registros de la comunidad.
               </p>
               <form class="subscriber-form admin-login-form" data-admin-login>
                 <label for="admin_email">Correo administrativo</label>
@@ -168,15 +165,15 @@
         <div class="container">
           <div class="section-heading reveal">
             <div>
-              <p class="eyebrow"><span></span> Funcionamiento</p>
-              <h2>Las cuatro operaciones de una base de datos.</h2>
+              <p class="eyebrow"><span></span> Tu privacidad importa</p>
+              <h2>¿Para qué usamos tus datos?</h2>
             </div>
           </div>
           <div class="crud-steps">
-            <article><span>01</span><strong>Crear</strong><p>El formulario inserta un usuario nuevo.</p></article>
-            <article><span>02</span><strong>Leer</strong><p>La tabla consulta y muestra los registros.</p></article>
-            <article><span>03</span><strong>Actualizar</strong><p>Editar modifica un registro existente.</p></article>
-            <article><span>04</span><strong>Eliminar</strong><p>Eliminar retira el registro seleccionado.</p></article>
+            <article><span>01</span><strong>Beneficios y promociones</strong><p>Hacerte llegar oportunidades relacionadas con movilidad y comunidad.</p></article>
+            <article><span>02</span><strong>Rutas y eventos</strong><p>Invitarte a recorridos, actividades locales y experiencias EcoRuta.</p></article>
+            <article><span>03</span><strong>Novedades</strong><p>Compartirte noticias sobre nuevos espacios, proyectos y recomendaciones.</p></article>
+            <article><span>04</span><strong>Contenido relevante</strong><p>Enviarte información de acuerdo con los intereses que seleccionaste.</p></article>
           </div>
         </div>
       </section>
